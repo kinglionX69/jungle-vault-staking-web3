@@ -1,0 +1,350 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Inter font with all weights including bold */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Pixel font is imported in index.html for better performance */
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 120 15% 8%;
+    --foreground: 120 15% 95%;
+
+    --card: 120 15% 10%;
+    --card-foreground: 120 15% 95%;
+
+    --popover: 120 15% 10%;
+    --popover-foreground: 120 15% 95%;
+
+    --primary: 120 40% 15%;
+    --primary-foreground: 120 15% 95%;
+
+    --secondary: 120 20% 20%;
+    --secondary-foreground: 120 15% 95%;
+
+    --muted: 120 15% 15%;
+    --muted-foreground: 120 15% 65%;
+
+    --accent: 51 100% 55%;
+    --accent-foreground: 120 40% 15%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 120 15% 95%;
+
+    --border: 120 15% 25%;
+    --input: 120 15% 15%;
+    --ring: 51 100% 55%;
+
+    --radius: 0.5rem;
+
+    /* Pixel theme colors */
+    --pixel-blue: 200 100% 45%;
+    --pixel-pink: 330 100% 50%;
+    --pixel-cyan: 190 100% 50%;
+    --pixel-lime: 120 100% 50%;
+    --pixel-orange: 30 100% 50%;
+    --pixel-magenta: 300 100% 50%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 120 15% 6%;
+    --foreground: 120 15% 95%;
+
+    --card: 120 15% 8%;
+    --card-foreground: 120 15% 95%;
+
+    --popover: 120 15% 8%;
+    --popover-foreground: 120 15% 95%;
+
+    --primary: 120 40% 12%;
+    --primary-foreground: 120 15% 95%;
+
+    --secondary: 120 20% 18%;
+    --secondary-foreground: 120 15% 95%;
+
+    --muted: 120 15% 12%;
+    --muted-foreground: 120 15% 70%;
+
+    --accent: 51 100% 50%;
+    --accent-foreground: 120 40% 12%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 120 15% 95%;
+
+    --border: 120 15% 20%;
+    --input: 120 15% 12%;
+    --ring: 51 100% 50%;
+
+    /* Pixel theme colors (same in dark mode) */
+    --pixel-blue: 200 100% 45%;
+    --pixel-pink: 330 100% 50%;
+    --pixel-cyan: 190 100% 50%;
+    --pixel-lime: 120 100% 50%;
+    --pixel-orange: 30 100% 50%;
+    --pixel-magenta: 300 100% 50%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter font-medium;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-inter font-bold;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .text-shadow-glow {
+    text-shadow: 0 0 10px rgba(255, 212, 59, 0.8), 0 0 20px rgba(255, 212, 59, 0.6), 0 0 30px rgba(255, 212, 59, 0.4);
+  }
+
+  .jungle-card {
+    @apply bg-card border border-border rounded-2xl shadow-xl backdrop-blur-sm;
+  }
+
+  .neon-button {
+    @apply bg-accent text-accent-foreground font-bold px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105;
+  }
+
+  /* Professional spacing system */
+  .space-xs { @apply space-y-1 }
+  .space-sm { @apply space-y-2 }
+  .space-md { @apply space-y-4 }
+  .space-lg { @apply space-y-6 }
+  .space-xl { @apply space-y-8 }
+
+  /* Touch targets for mobile */
+  .touch-target { @apply min-h-[44px] min-w-[44px] }
+
+  /* Loading states */
+  .loading-skeleton { @apply animate-pulse bg-muted rounded }
+  
+  /* Focus states */
+  .focus-ring { @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 }
+
+  /* Mobile-first responsive text */
+  .text-responsive-sm { @apply text-sm md:text-base }
+  .text-responsive-base { @apply text-base md:text-lg }
+  .text-responsive-lg { @apply text-lg md:text-xl }
+  .text-responsive-xl { @apply text-xl md:text-2xl }
+  .text-responsive-2xl { @apply text-2xl md:text-3xl }
+  .text-responsive-3xl { @apply text-3xl md:text-4xl }
+
+  .temple-bg {
+    background-image: 
+      linear-gradient(135deg, rgba(13, 17, 23, 0.95) 0%, rgba(20, 83, 45, 0.8) 100%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23166534' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Pixel styling utilities */
+  .pixel-border {
+    border: 2px solid;
+    border-image: 
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        currentColor 2px,
+        currentColor 4px
+      ) 2;
+  }
+
+  .pixel-button {
+    @apply font-pixel text-xs px-4 py-2 uppercase tracking-wider;
+    image-rendering: pixelated;
+    box-shadow: 
+      inset 2px 2px 0px rgba(255,255,255,0.3),
+      inset -2px -2px 0px rgba(0,0,0,0.3),
+      2px 2px 0px rgba(0,0,0,0.5);
+    transition: all 0.1s ease;
+  }
+
+  .pixel-button:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 
+      inset 2px 2px 0px rgba(255,255,255,0.4),
+      inset -2px -2px 0px rgba(0,0,0,0.4),
+      1px 1px 0px rgba(0,0,0,0.5);
+  }
+
+  .pixel-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 
+      inset 1px 1px 0px rgba(255,255,255,0.2),
+      inset -1px -1px 0px rgba(0,0,0,0.2);
+  }
+
+  .pixel-card {
+    @apply jungle-card;
+    box-shadow: 
+      0 0 0 2px rgba(255,255,255,0.1),
+      4px 4px 0px rgba(0,0,0,0.3),
+      8px 8px 0px rgba(0,0,0,0.1);
+    image-rendering: pixelated;
+  }
+
+  .pixel-glow {
+    box-shadow: 
+      0 0 10px hsl(var(--pixel-cyan)),
+      0 0 20px hsl(var(--pixel-cyan)),
+      0 0 30px hsl(var(--pixel-cyan));
+    animation: pixel-pulse 2s ease-in-out infinite;
+  }
+
+  .text-pixel-glow {
+    text-shadow: 
+      0 0 3px #00ffff,
+      0 0 6px #00ffff,
+      0 0 9px #00ffff,
+      0 0 12px #00ffff,
+      0 0 18px #00ffff,
+      0 0 24px #00ffff,
+      0 0 30px #00ffff;
+    color: white !important;
+    filter: brightness(1.3) contrast(1.1);
+  }
+
+  .pixel-text {
+    @apply font-pixel text-shadow;
+    image-rendering: pixelated;
+    text-rendering: geometricPrecision;
+  }
+
+  .pixel-gradient {
+    background: linear-gradient(
+      45deg,
+      hsl(var(--pixel-blue)),
+      hsl(var(--pixel-pink)),
+      hsl(var(--pixel-cyan)),
+      hsl(var(--pixel-lime))
+    );
+    background-size: 200% 200%;
+    animation: pixel-pulse 3s ease-in-out infinite;
+  }
+
+  .scanlines-effect {
+    position: relative;
+  }
+
+  .scanlines-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.03) 2px,
+        rgba(255,255,255,0.03) 4px
+      );
+    pointer-events: none;
+    animation: scanlines 2s linear infinite;
+  }
+
+  .crt-effect {
+    position: relative;
+  }
+
+  .crt-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 70%,
+      rgba(0,0,0,0.2) 100%
+    );
+    pointer-events: none;
+  }
+
+  .retro-glow {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor;
+  }
+
+  /* Enhanced neon button with pixel effects */
+  .neon-button-pixel {
+    @apply neon-button pixel-button;
+    background: linear-gradient(
+      45deg,
+      hsl(var(--accent)),
+      hsl(var(--pixel-cyan))
+    );
+    border: 2px solid hsl(var(--pixel-cyan));
+    box-shadow: 
+      inset 2px 2px 0px rgba(255,255,255,0.3),
+      inset -2px -2px 0px rgba(0,0,0,0.3),
+      0 0 10px hsl(var(--pixel-cyan)),
+      2px 2px 0px rgba(0,0,0,0.5);
+  }
+
+  .neon-button-pixel:hover {
+    background: linear-gradient(
+      45deg,
+      hsl(var(--pixel-cyan)),
+      hsl(var(--accent))
+    );
+    box-shadow: 
+      inset 2px 2px 0px rgba(255,255,255,0.4),
+      inset -2px -2px 0px rgba(0,0,0,0.4),
+      0 0 20px hsl(var(--pixel-cyan)),
+      1px 1px 0px rgba(0,0,0,0.5);
+  }
+}
